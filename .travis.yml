@@ -1,5 +1,4 @@
 language: python
-
 install: skip 
 
 services: 
@@ -10,7 +9,7 @@ script:
 after_succes:
   - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_ID\" --password-stdin"
 
-  - docker push ezekiel17/user-wishlist .
+  - docker push ezekiel17/user-wishlist 
 deploy:
   provider: elasticbeanstalk
   region: us-east-2 
