@@ -1,0 +1,23 @@
+language: generic 
+
+services: 
+  - docker
+
+after_succes:
+  - docker build -t Ezekiel-Lewis/user-wishlist . 
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push Ezekiel-Lewis/user-wishlist .
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1 
+  app: my-user-wishlist-app
+  env: Myuserwishlistapp-env
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket_name: "multi-contiainer-wishlist-app"
+  bucket_path: "docker"
+  on: 
+    branch: multi-cont-app
