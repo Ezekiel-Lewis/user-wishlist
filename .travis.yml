@@ -2,14 +2,14 @@ language: generic
 
 services: 
   - docker
-
+script:
+  - "echo testing && ls"
 after_succes:
-  - docker build -t Ezekiel-Lewis/user-wishlist . 
+  - docker build -t ezekiel17/user-wishlist . 
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push Ezekiel-Lewis/user-wishlist .
-
+  - docker push ezekiel17/user-wishlist .
 deploy:
   provider: elasticbeanstalk
   region: us-east-1 
