@@ -4,15 +4,14 @@ services:
   - docker
 script:
   - "echo testing && ls"
-after_succes:
   - docker build -t ezekiel17/user-wishlist . 
-
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+after_succes:
+  - echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_ID\" --password-stdin"
 
   - docker push ezekiel17/user-wishlist .
 deploy:
   provider: elasticbeanstalk
-  region: us-east-1 
+  region: us-east-2 
   app: my-user-wishlist-app
   env: Myuserwishlistapp-env
   access_key_id: $AWS_ACCESS_KEY
