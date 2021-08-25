@@ -7,9 +7,10 @@ script:
   - "echo testing && ls"
   - docker build -t ezekiel17/user-wishlist . 
 after_succes:
-  - "echo $DOCKER_PASSWORD\" | docker login -u \"$DOCKER_ID\" --password-stdin"
+  - "echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID"  --password-stdin"
 
   - docker push ezekiel17/user-wishlist 
+  
 deploy:
   provider: elasticbeanstalk
   region: us-east-2 
