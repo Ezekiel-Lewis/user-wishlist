@@ -6,7 +6,7 @@ services:
 script:
   - "echo testing && ls"
   - docker build -t ezekiel17/user-wishlist . 
-after_succes:
+after_success:
   - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_ID\"  --password-stdin"
 
   - "docker push ezekiel17/user-wishlist" 
